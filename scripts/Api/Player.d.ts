@@ -1,5 +1,5 @@
 import { Player as IPlayer } from "@minecraft/server";
-import { Dimensions, Effects, Gamemode, Vec3 } from "./Types";
+import { Dimensions, Effects, Gamemode, SoundOptions, Vec3 } from "./Types";
 export declare class Player {
     protected player: IPlayer;
     constructor(player: IPlayer);
@@ -132,4 +132,8 @@ export declare class Player {
      * @param {string} event Event to trigger
      */
     triggerEvent(event: string): void;
+    /**
+     * Plays a sound that only this particular player can hear
+     */
+    playSound(soundID: string, soundOptions: SoundOptions);
 }

@@ -1,3 +1,4 @@
+import { World } from "./Client";
 import type { Player } from "./Player";
 export declare enum Gamemode {
     creative = 0,
@@ -100,4 +101,44 @@ export interface CommandData extends CommandInfo {
         player: Player;
         args: string[];
     }): void;
+}
+
+export interface Location {
+    x: number;
+    y: number;
+    z: number;
+}
+/**
+ * Additional configuration options for {@link World.playMusic}/{@link World.queueMusic} methods.
+ */
+export interface MusicOptions {
+    /**
+     * Specifies a fade overlap for music at the end of play.
+     */
+    fade?: number;
+    /**
+     * If set to true, this music track will play repeatedly.
+     */
+    loop?: boolean;
+    /**
+     * Relative volume level of the music.
+     */
+    volume?: number;
+}
+/**
+ * Additional configuration options for the {@link Player.playSound}/{@link World.playSound} method.
+ */
+export interface SoundOptions {
+    /**
+     * Specifies a location of where to play a particular sound.
+     */
+    location?: Location;
+    /**
+     * Pitch adjustment level for the sound.
+     */
+    pitch?: number;
+    /**
+     * Relative volume level of the sound.
+     */
+    volume?: number;
 }

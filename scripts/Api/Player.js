@@ -209,4 +209,13 @@ export class Player {
     triggerEvent(event) {
         this.player.runCommandAsync(`event entity @s ${event}`);
     }
+    /**
+     * Plays a sound that only this particular player can hear
+     * @param {string} soundID
+     * @param {import("./Types").SoundOptions} soundOptions
+     */
+    playSound(soundID, soundOptions) {
+        const l = soundOptions?.location ? true : false
+        this.player.runCommandAsync(`playsound ${soundID} @s ${l ? Object.values(soundOptions).join(" ") : ""} ${(l && soundOptions?.volume) ? soundOptions.volume : "" } ${(l && soundOptions?.volume && soundOptions?.pitch) ? soundOptions.pitch : ""}`)
+    }
 }
