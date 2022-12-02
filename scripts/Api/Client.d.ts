@@ -54,7 +54,7 @@ declare class World {
     /**
      * Queues an additional music track for all players. if a track is not playing, a music track will play
      */
-    queueMusic(): void;
+    queueMusic(trackID: string, musicOptions: MusicOptions): void;
     /**
      * Plays a sound for all players
      */
