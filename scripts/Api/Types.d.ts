@@ -101,3 +101,5 @@ export interface CommandData extends CommandInfo {
         args: string[];
     }): void;
 }
+
+export type timeSpec = 'day' | 'midnight' | 'night' | 'noon' | 'sunrise' | 'sunset'

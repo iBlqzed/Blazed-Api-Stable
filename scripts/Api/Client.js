@@ -3,6 +3,7 @@ import { CommandHandler } from "./CommandHandler";
 import { Dimension } from "./Dimension";
 import { Events } from "./Events/Events";
 import { Player } from "./Player";
+import { timeSpec } from "./Types"
 const v = Iworld.getDimension("overworld");
 class World {
     constructor() {
@@ -70,6 +71,24 @@ class World {
      */
     broadcast(message) {
         v.runCommandAsync(`tellraw @a {"rawtext":[{"text":"${message.toString()}"}]}`);
+    }
+    /**
+     * Set world time
+     * @param {timeSpec | number} timeOfDay
+     * @returns {Promise<any>}
+     */
+    async setTime(timeOfDay) {
+        const l = {
+            day: 49000,
+            midnight: 66000,
+            night: 85000,
+            noon: 102000,
+            sunrise: 119000,
+            sunset: 132000
+        }
+        if (isNaN(timeOfDay) && !Object.keys(l).includes(timeOfDay))
+            return;
+        v.runCommandAsync(`time set ${timeOfDay}`)
     }
 }
 export const world = new World();
