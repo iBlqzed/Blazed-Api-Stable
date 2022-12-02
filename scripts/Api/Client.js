@@ -86,14 +86,14 @@ class World {
     /**
      * Plays a particular track for all players
      */
-    playMusic(musicID, musicOptions) {
-        v.runCommandAsync(`music play ${musicID} ${musicOptions?.volume ?? ""} ${musicOptions?.fade ?? ""} ${musicOptions?.loop ? musicOptions.loop === true ? "loop" : "only_once" : ""}`)
+    playMusic(trackID, musicOptions) {
+        v.runCommandAsync(`music play ${trackID} ${musicOptions?.volume ?? ""} ${musicOptions?.fade ?? ""} ${musicOptions?.loop ? musicOptions.loop === true ? "loop" : "only_once" : ""}`)
     }
     /**
      * Queues an additional music track for all players. if a track is not playing, a music track will play
      */
-    queueMusic(musicID, musicOptions) {
-        v.runCommandAsync(`music queue ${musicID} ${musicOptions?.volume ?? ""} ${musicOptions?.fade ?? ""} ${musicOptions?.loop ? musicOptions.loop === true ? "loop" : "only_once" : ""}`)
+    queueMusic(trackID, musicOptions) {
+        v.runCommandAsync(`music queue ${trackID} ${musicOptions?.volume ?? ""} ${musicOptions?.fade ?? ""} ${musicOptions?.loop ? musicOptions.loop === true ? "loop" : "only_once" : ""}`)
     }
     /**
      * Stops any music tracks from playing
