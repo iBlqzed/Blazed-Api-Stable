@@ -1,7 +1,3 @@
-import { timeSpec } from "./Types";
-
-export declare class World {
-    setTime(timeOfDay: timeSpec | number): void
 import { CommandManager } from "./CommandHandler";
 import { Dimension } from "./Dimension";
 import { Events } from "./Events/Events";
