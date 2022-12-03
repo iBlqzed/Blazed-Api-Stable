@@ -1,5 +1,6 @@
 import { Player as IPlayer } from "@minecraft/server";
-import { Dimensions, Effects, Gamemode, SoundOptions, Vec3 } from "./Types";
+import { Dimension } from "./Dimension";
+import { Effects, Gamemode, SoundOptions, Vec3 } from "./Types";
 export declare class Player {
     protected player: IPlayer;
     constructor(player: IPlayer);
@@ -43,9 +44,9 @@ export declare class Player {
     clearTitle(): void;
     /**
      * Get the dimension of the entity
-     * @returns {Dimensions} The entity's dimension
+     * @returns {Dimension} The entity's dimension
      */
-    getDimension(): Dimensions;
+    getDimension(): Dimension;
     /**
      * Get the player's gamemode
      * @returns {Promise<Gamemode>} The player's gamemode

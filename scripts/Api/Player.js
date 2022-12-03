@@ -1,4 +1,5 @@
 import { commands } from "./CommandHandler";
+import { Dimension } from "./Dimension";
 import { Gamemode } from "./Types";
 export class Player {
     constructor(player) {
@@ -62,11 +63,11 @@ export class Player {
     }
     /**
      * Get the dimension of the entity
-     * @returns {Dimensions} The entity's dimension
+     * @returns {Dimension} The entity's dimension
      */
     getDimension() {
         //@ts-ignore
-        return this.player.dimension.id;
+        return new Dimension(this.player.dimension.id);
     }
     /**
      * Get the player's gamemode
@@ -119,7 +120,7 @@ export class Player {
      * @returns {Promise<number>} The score, or NaN if error
      */
     async getScore(objective) {
-        return this.player.runCommandAsync(`scoreboard players test @s "${objective}" -2147483648 -2147483648`).then(() => -2147483648, e => parseInt(e.split(" ")[1]) ?? NaN);
+        return this.player.runCommandAsync(`scoreboard players test @s "${objective}" -2147483648 -2147483648`).then(() => -2147483648, (e) => parseInt(e.match(/-?\d+/)[0]) ?? NaN);
     }
     /**
      * Get the entity's unique id

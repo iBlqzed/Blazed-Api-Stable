@@ -1,7 +1,7 @@
 import type { Player } from "./Player";
 export declare enum Gamemode {
-    creative = 0,
-    survival = 1,
+    survival = 0,
+    creative = 1,
     adventure = 2,
     spectator = 3
 }
