@@ -3,8 +3,11 @@ import { EventCreator } from "./EventCreator";
 export class TickEventSignal extends EventCreator {
     constructor() {
         super();
+        let now = Date.now();
         const tick = () => {
-            this.emit();
+            const v = Date.now();
+            this.emit({ deltaTime: v - now });
+            now = v;
             system.run(tick);
         };
         system.run(tick);

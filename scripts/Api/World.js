@@ -78,21 +78,21 @@ class World {
             plrs.forEach(async (plr, i) => {
                 let cmd = `testfor @s[`;
                 if (options.name)
-                    cmd += `name = ${options.name}, `;
+                    cmd += `name=${options.name},`;
                 else if (options.excludeNames)
-                    options.excludeNames.forEach(name => cmd += `name = !${name}, `);
+                    options.excludeNames.forEach(name => cmd += `name=!${name},`);
                 if (options.gameMode)
-                    cmd += `m = ${options.gameMode}, `;
+                    cmd += `m=${options.gameMode},`;
                 else if (options.excludeGameModes)
-                    options.excludeGameModes.forEach(gm => cmd += `m = !${gm}, `);
+                    options.excludeGameModes.forEach(gm => cmd += `m=!${gm},`);
                 if (options.tags)
-                    cmd += options.tags.forEach(tag => `tag = ${tag}, `);
+                    cmd += options.tags.forEach(tag => `tag=${tag},`);
                 else if (options.excludeTags)
-                    options.excludeTags.forEach(tag => cmd += `tag = !${tag}, `);
+                    options.excludeTags.forEach(tag => cmd += `tag=!${tag},`);
                 if (options.location) {
-                    cmd += `x = ${Math.floor(options.location.x)}, y = ${Math.floor(options.location.y)}, y = ${Math.floor(options.location.y)}, `;
+                    cmd += `x=${Math.floor(options.location.x)},y=${Math.floor(options.location.y)},z=${Math.floor(options.location.z)},`;
                     if (options.closest)
-                        cmd += `c = ${options.closest}, `;
+                        cmd += `c=${options.closest},`;
                 }
                 plr.runCommandAsync(cmd.slice(0, -1) + "]").then(() => plrArr.push(new Player(plr))).finally(() => (++i === len) && e(plrArr));
             });

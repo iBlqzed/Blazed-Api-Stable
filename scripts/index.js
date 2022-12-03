@@ -1,14 +1,9 @@
 import { world } from "./Api/index.js";
-// world.events.playerJoin.subscribe((data) => {
-//     console.warn(`${data.player.getName()} joined the game!`)
-// })
-// world.events.playerDeath.subscribe((data) => {
-//     console.warn(`${data.player.getName()} has died!`)
-// })
-// world.events.playerLeave.subscribe(data => {
-//     console.warn(`${data.playerName} left the game!`)
-// })
-world.playSound("random.toast", {
-    volume: 1,
-    pitch: 0.5
+const timeArray = [];
+let tps;
+world.events.tick.subscribe(async ({ deltaTime }) => {
+    if (timeArray.length >= 50)
+        timeArray.shift();
+    timeArray.push(deltaTime / 1000);
+    tps = Math.min(Math.round(timeArray.length / timeArray.reduce((a, b) => a + b) * 10) / 10, 19.9);
 });
