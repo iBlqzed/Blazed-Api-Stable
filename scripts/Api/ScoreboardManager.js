@@ -16,4 +16,19 @@ export class ScoreboardManager {
     removeObjective(id) {
         v.runCommandAsync(`scoreboard objectives remove ${id}`);
     }
+    /**
+     * Sets an objective into display slot with specified additional display setting
+     * @param {DisplaySlotId} displaySlotId
+     * @param {ScoreboardObjectiveDisplayOptions} objectiveDisplaySetting
+     */
+    setObjectiveAtDisplaySlot(displaySlotId, objectiveDisplaySetting) {
+        v.runCommandAsync(`scoreboard objectives setdisplay ${displaySlotId} ${objectiveDisplaySetting?.objective} ${objectiveDisplaySetting?.sortOrder ? 'descending' : 'ascending'}`)
+    }
+     /**
+      * Clears the objective that occupies a display slot
+      * @param {DisplaySlotId} displaySlotId
+      */
+    clearObjectiveAtDisplaySlot(displaySlotId) {
+        v.runCommandAsync(`scoreboard objectives setdisplay ${displaySlotId}`)
+    }
 }

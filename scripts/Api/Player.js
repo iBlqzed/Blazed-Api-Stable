@@ -1,5 +1,6 @@
 import { commands } from "./CommandHandler";
 import { Dimension } from "./Dimension";
+import { Location } from "./Location";
 import { Gamemode } from "./Types";
 export class Player {
     constructor(player) {
@@ -101,11 +102,11 @@ export class Player {
      * @returns {Promise<Vec3>} The player's location
      */
     async getLocation() {
-        return {
-            x: await this.getScore("API_X"),
-            y: await this.getScore("API_Y"),
-            z: await this.getScore("API_Z")
-        };
+        return new Location(
+            await this.getScore("API_X"),
+            await this.getScore("API_Y"),
+            await this.getScore("API_Z")
+        );
     }
     /**
      * Get the player's name

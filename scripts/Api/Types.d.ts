@@ -5,6 +5,22 @@ export declare enum Gamemode {
     adventure = 2,
     spectator = 3
 }
+/**
+ * Used for specifying a sort order for how to display an
+ * objective and its list of participants.
+ */
+ export enum ObjectiveSortOrder {
+    /**
+     * Objective participant list is displayed in ascending (e.g.,
+     * A-Z) order.
+     */
+    ascending = 0,
+    /**
+     * Objective participant list is displayed in descending (e.g.,
+     * Z-A) order.
+     */
+    descending = 1,
+}
 export declare type Vec3 = {
     /**
      * The x position
@@ -79,9 +95,27 @@ export declare type EntityQueryOptions = {
      */
     excludeTags?: string[];
 };
+/**
+ * Contains additional options for how a scoreboard should be
+ * displayed within its display slot.
+ */
+ export class ScoreboardObjectiveDisplayOptions {
+    /**
+     * Objective to be displayed.
+     */
+    readonly objective: string;
+    /**
+     * The sort order to display the objective items within.
+     */
+    readonly sortOrder: ObjectiveSortOrder;
+    constructor(objective: string, sortOrder?: ObjectiveSortOrder);
+}
 export declare type Effects = "absorption" | "bad_omen" | "blindness" | "conduit_power" | "darkness" | "fatal_poison" | "fire_resistance" | "haste" | "health_boost" | "hunger" | "instant_damage" | "instant_health" | "invisibility" | "jump_boost" | "levitation" | "mining_fatigue" | "nausea" | "night_vision" | "poison" | "regeneration" | "resistance" | "saturation" | "slow_falling" | "slowness" | "speed" | "strength" | "village_hero" | "water_breathing" | "weakness" | "wither";
 export declare type Dimensions = "overworld" | "nether" | "the end";
 export declare type Time = "sunrise" | "day" | "noon" | "sunset" | "night" | "midnight" | number;
+export declare type DisplaySlotId = "belowname" | "list" | "sidebar"
+export declare type Difficulty = "easy" | "normal" | "hard" | "peaceful" | number;
+export declare type Rule = "commandblockoutput" | "commandblocksenbled" | "dodaylightcycle" | "doweathercycle" | "doentitydrops" | "dofiretick" | "doinmediaterespawn" | "doinsomnia" | "domobloot" | "domobspawning" | "dotiledrops" | "drowningdamage" | "falldamage" | "freezedamage" | "firedamage" | "functioncommandlimit" | "maxcommandchainlength" | "randomtickspeed" | "respawnblocksexplode" | "showcoordinates" | "showdeathmessages" | "naturalregeneration" | "mobgriefing" | "showtags" | "tntexplodes" | "spawnradius" | "pvp"
 export declare type MusicOptions = {
     /**
      * Specifies a fade overlap for music at the end of play.

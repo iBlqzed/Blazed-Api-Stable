@@ -1,9 +1,10 @@
 import { CommandManager } from "./CommandHandler";
 import { Dimension } from "./Dimension";
 import { Events } from "./Events/Events";
+import { GameruleManager } from "./GameruleManager";
 import { Player } from "./Player";
 import { ScoreboardManager } from "./ScoreboardManager";
-import { Dimensions, EntityQueryOptions, MusicOptions, SoundOptions, Time } from "./Types";
+import { Difficulty, Dimensions, EntityQueryOptions, MusicOptions, SoundOptions, Time } from "./Types";
 declare class World {
     /**
      * A custom commmand handler
@@ -17,6 +18,10 @@ declare class World {
      * The world scoreboard manager
      */
     readonly scoreboard: ScoreboardManager;
+    /**
+     * The world gamerule manager
+     */
+    readonly gamerule: GameruleManager
     /**
      * Run a command async
      * @param {string} command Command to run

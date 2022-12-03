@@ -1,3 +1,4 @@
+import { Location } from "./Location";
 import { Dimensions } from "./Types";
 export declare class Dimension {
     private dimension;
@@ -13,4 +14,14 @@ export declare class Dimension {
      * @returns {Promise<boolean>} Whether or not there was an error
      */
     runCommandAsync(command: string): Promise<boolean>;
+    /**
+     * @remarks
+     * Creates a new particle emitter at a specified location in
+     * the world.
+     * @param effectName
+     * Identifier of the particle to create.
+     * @param location
+     * The location at which to create the particle emitter.
+     */
+    spawnParticle(effectName: string, location: Location): void;
 }
