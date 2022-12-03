@@ -125,13 +125,5 @@ class World {
     setDifficulty(difficulty) {
         v.runCommandAsync(`difficulty ${difficulty}`)
     }
-    /**
-     * @remarks
-     * Sets world's maxplayers
-     * @param {number} maxPlayers
-     */
-    setMaxPlayers(maxPlayers) {
-        v.runCommandAsync(`setmaxplayers ${maxPlayers}`)
-    }
 }
 export const world = new World();

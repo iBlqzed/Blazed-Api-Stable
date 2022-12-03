@@ -77,12 +77,6 @@ declare class World {
      * @param {Difficulty} difficulty
      */
     setDifficulty(difficulty: Difficulty): void;
-    /**
-     * @remarks
-     * Sets world's maxplayers
-     * @param {number} maxPlayers
-     */
-    setMaxPlayers(maxPlayers: number): void;
 }
 export declare const world: World;
 export {};
