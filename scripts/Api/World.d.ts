@@ -72,11 +72,6 @@ declare class World {
      * @param {string | number | symbol} message Message to broadcast
      */
     broadcast(message: string | number | symbol): void;
-    /**
-     * Sets world's difficulty
-     * @param {Difficulty} difficulty
-     */
-    setDifficulty(difficulty: Difficulty): void;
 }
 export declare const world: World;
 export {};
