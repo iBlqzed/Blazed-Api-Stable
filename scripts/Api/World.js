@@ -2,6 +2,7 @@ import { world as Iworld } from "@minecraft/server";
 import { CommandManager } from "./CommandHandler";
 import { Dimension } from "./Dimension";
 import { Events } from "./Events/Events";
+import { GameruleManager } from "./GameruleManager";
 import { Player } from "./Player";
 import { ScoreboardManager } from "./ScoreboardManager";
 const v = Iworld.getDimension("overworld");
@@ -19,6 +20,10 @@ class World {
          * The world scoreboard manager
          */
         this.scoreboard = new ScoreboardManager();
+        /**
+         * The world gamerule manager
+         */
+        this.gamerule = new GameruleManager();
     }
     /**
      * Run a command async
@@ -112,6 +117,21 @@ class World {
      */
     broadcast(message) {
         v.runCommandAsync(`tellraw @a { "rawtext": [{ "text": "${message.toString()}" }] } `);
+    }
+    /**
+     * Set world's difficulty
+     * @param {import("./Types").Difficulty} difficulty
+     */
+    setDifficulty(difficulty) {
+        v.runCommandAsync(`difficulty ${difficulty}`)
+    }
+    /**
+     * @remarks
+     * Sets world's maxplayers
+     * @param {number} maxPlayers
+     */
+    setMaxPlayers(maxPlayers) {
+        v.runCommandAsync(`setmaxplayers ${maxPlayers}`)
     }
 }
 export const world = new World();

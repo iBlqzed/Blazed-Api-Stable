@@ -114,6 +114,8 @@ export declare type Effects = "absorption" | "bad_omen" | "blindness" | "conduit
 export declare type Dimensions = "overworld" | "nether" | "the end";
 export declare type Time = "sunrise" | "day" | "noon" | "sunset" | "night" | "midnight" | number;
 export declare type DisplaySlotId = "belowname" | "list" | "sidebar"
+export declare type Difficulty = "easy" | "normal" | "hard" | "peaceful" | number;
+export declare type Rule = "commandblockoutput" | "commandblocksenbled" | "dodaylightcycle" | "doweathercycle" | "doentitydrops" | "dofiretick" | "doinmediaterespawn" | "doinsomnia" | "domobloot" | "domobspawning" | "dotiledrops" | "drowningdamage" | "falldamage" | "freezedamage" | "firedamage" | "functioncommandlimit" | "maxcommandchainlength" | "randomtickspeed" | "respawnblocksexplode" | "showcoordinates" | "showdeathmessages" | "naturalregeneration" | "mobgriefing" | "showtags" | "tntexplodes" | "spawnradius" | "pvp"
 export declare type MusicOptions = {
     /**
      * Specifies a fade overlap for music at the end of play.
