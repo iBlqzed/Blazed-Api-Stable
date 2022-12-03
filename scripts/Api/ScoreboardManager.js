@@ -29,6 +29,6 @@ export class ScoreboardManager {
       * @param {DisplaySlotId} displaySlotId
       */
     clearObjectiveAtDisplaySlot(displaySlotId) {
-        v.runCommandAsync(`scoreboard objetives setdisplay ${displaySlotId}`)
+        v.runCommandAsync(`scoreboard objectives setdisplay ${displaySlotId}`)
     }
 }
