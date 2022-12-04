@@ -59,7 +59,7 @@ export class Player {
      * @remarks Only clears title and subtitle, not actionbar
      */
     clearTitle() {
-        this.player.runCommandAsync(`/title @s clear`);
+        this.player.runCommandAsync(`title @s clear`);
     }
     /**
      * Get the dimension of the entity
@@ -78,7 +78,7 @@ export class Player {
             this.player.runCommandAsync(`testfor @s[m=${Gamemode.survival}]`).then(() => Gamemode.survival),
             this.player.runCommandAsync(`testfor @s[m=${Gamemode.creative}]`).then(() => Gamemode.creative),
             this.player.runCommandAsync(`testfor @s[m=${Gamemode.adventure}]`).then(() => Gamemode.adventure),
-            this.player.runCommandAsync(`testfor @s[m=${Gamemode.spectator}]`).then(() => Gamemode.spectator),
+            this.player.runCommandAsync(`testfor @s[m=spectator]`).then(() => Gamemode.spectator),
         ]).catch(() => undefined);
     }
     /**
@@ -136,10 +136,10 @@ export class Player {
      * @returns {Promise<boolean>} Whether or not the entity has the tag
      */
     async hasTag(tag) {
-        return new Promise(e => this.player.runCommandAsync(`tag @s add ${tag}`).then(() => {
-            this.player.runCommandAsync(`tag @s remove ${tag}`);
-            e(false);
-        }, () => e(true)));
+        return this.player.runCommandAsync(`tag @s add ${tag}`).then(async () => {
+            await this.player.runCommandAsync(`tag @s remove ${tag}`);
+            return false;
+        }, () => true);
     }
     /**
      * Kill the entity
@@ -207,6 +207,13 @@ export class Player {
      */
     setScore(objective, score) {
         this.player.runCommandAsync(`scoreboard players set @s "${objective}" ${score}`);
+    }
+    /**
+     * Set the player's gamemode
+     * @param {Gamemode} gamemode The gamemode to set as the player's
+     */
+    setGamemode(gamemode) {
+        this.player.runCommandAsync(`gamemode ${gamemode === Gamemode.spectator ? "spectator" : gamemode} @s`);
     }
     /**
      * Teleport to a certain location

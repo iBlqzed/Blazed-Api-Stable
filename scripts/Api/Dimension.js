@@ -18,4 +18,12 @@ export class Dimension {
     runCommandAsync(command) {
         return new Promise(e => this.dimension.runCommandAsync(command).then(() => e(true)).catch(() => e(false)));
     }
+    /**
+     * Spawn a particle at a certain location in this dimension
+     * @param particleId The particle id
+     * @param location The location at which to spawn the particle
+     */
+    spawnParticle(particleId, location) {
+        this.dimension.runCommandAsync(`particle ${particleId} ${location ? `${location.x} ${location.y} ${location.z}` : "~~~"}`);
+    }
 }

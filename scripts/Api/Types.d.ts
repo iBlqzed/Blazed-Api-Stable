@@ -3,7 +3,8 @@ export declare enum Gamemode {
     survival = 0,
     creative = 1,
     adventure = 2,
-    spectator = 3
+    spectator = 3,
+    default = 5
 }
 export declare type Vec3 = {
     /**
@@ -82,6 +83,39 @@ export declare type EntityQueryOptions = {
 export declare type Effects = "absorption" | "bad_omen" | "blindness" | "conduit_power" | "darkness" | "fatal_poison" | "fire_resistance" | "haste" | "health_boost" | "hunger" | "instant_damage" | "instant_health" | "invisibility" | "jump_boost" | "levitation" | "mining_fatigue" | "nausea" | "night_vision" | "poison" | "regeneration" | "resistance" | "saturation" | "slow_falling" | "slowness" | "speed" | "strength" | "village_hero" | "water_breathing" | "weakness" | "wither";
 export declare type Dimensions = "overworld" | "nether" | "the end";
 export declare type Time = "sunrise" | "day" | "noon" | "sunset" | "night" | "midnight" | number;
+export declare type DisplaySlot = "belowname" | "list" | "sidebar";
+export declare type Difficulty = "peaceful" | "easy" | "normal" | "hard" | number;
+export declare type Gamerule = {
+    "commandblockoutput": boolean;
+    "commandblocksenbled": boolean;
+    "dodaylightcycle": boolean;
+    "doweathercycle": boolean;
+    "doentitydrops": boolean;
+    "dofiretick": boolean;
+    "doinmediaterespawn": boolean;
+    "doinsomnia": boolean;
+    "domobloot": boolean;
+    "domobspawning": boolean;
+    "dotiledrops": boolean;
+    "drowningdamage": boolean;
+    "falldamage": boolean;
+    "freezedamage": boolean;
+    "firedamage": boolean;
+    "functioncommandlimit": number;
+    "keepinventory": boolean;
+    "maxcommandchainlength": number;
+    "randomtickspeed": number;
+    "respawnblocksexplode": boolean;
+    "sendcommandfeedback": boolean;
+    "showcoordinates": boolean;
+    "showdeathmessages": boolean;
+    "naturalregeneration": boolean;
+    "mobgriefing": boolean;
+    "showtags": boolean;
+    "tntexplodes": boolean;
+    "spawnradius": boolean;
+    "pvp": boolean;
+};
 export declare type MusicOptions = {
     /**
      * Specifies a fade overlap for music at the end of play.

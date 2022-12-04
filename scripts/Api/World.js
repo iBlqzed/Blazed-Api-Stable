@@ -66,6 +66,22 @@ class World {
         v.runCommandAsync(`execute as @a at @s run playsound ${soundId} @s ${soundOptions?.location ? `${soundOptions.location.x} ${soundOptions.location.y} ${soundOptions.location.z}` : `~~~`} ${soundOptions?.volume ?? '1'} ${soundOptions?.pitch ?? "1"}`);
     }
     /**
+     * Set the difficulty of the world
+     * @param {Difficulty} difficulty The difficulty to set the world to
+     */
+    setDifficulty(difficulty) {
+        v.runCommandAsync(`difficulty ${difficulty}`);
+    }
+    /**
+     * Set the value of a gamerule
+     * @template {keyof Gamerule} V
+     * @param {V} gamerule The gamerule to set
+     * @param {Gamerule[V]} value The value to set the gamerule too
+     */
+    setGamerule(gamerule, value) {
+        v.runCommandAsync(`gamerule ${gamerule} ${value}`);
+    }
+    /**
      * Get all players, with custom query options
      * @param {EntityQueryOptions} options The query options
      * @returns {Player[]} All players that match the query options

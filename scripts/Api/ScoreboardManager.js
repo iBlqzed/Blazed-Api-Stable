@@ -16,4 +16,19 @@ export class ScoreboardManager {
     removeObjective(id) {
         v.runCommandAsync(`scoreboard objectives remove ${id}`);
     }
+    /**
+     * Set an objective to a display slot
+     * @param {string} objective Objective to set at the display slot
+     * @param {DisplaySlot} displaySlot The display slot
+     */
+    setObjectiveAtDisplaySlot(objective, displaySlot) {
+        v.runCommandAsync(`scoreboard objectives setdisplay ${displaySlot} ${objective}`);
+    }
+    /**
+     * Clear whatever objective is at a display slot
+     * @param {DisplaySlot} displaySlot The display slot
+     */
+    clearObjectiveAtDisplaySlot(displaySlot) {
+        v.runCommandAsync(`scoreboard objectives setdisplay ${displaySlot}`);
+    }
 }

@@ -3,7 +3,7 @@ import { Dimension } from "./Dimension";
 import { Events } from "./Events/Events";
 import { Player } from "./Player";
 import { ScoreboardManager } from "./ScoreboardManager";
-import { Dimensions, EntityQueryOptions, MusicOptions, SoundOptions, Time } from "./Types";
+import { Difficulty, Dimensions, EntityQueryOptions, Gamerule, MusicOptions, SoundOptions, Time } from "./Types";
 declare class World {
     /**
      * A custom commmand handler
@@ -50,6 +50,18 @@ declare class World {
      * @param {SoundOptions} soundOptions Aditional sound options
      */
     playSound(soundId: string, soundOptions?: SoundOptions): void;
+    /**
+     * Set the difficulty of the world
+     * @param {Difficulty} difficulty The difficulty to set the world to
+     */
+    setDifficulty(difficulty: Difficulty): void;
+    /**
+     * Set the value of a gamerule
+     * @template {keyof Gamerule} V
+     * @param {V} gamerule The gamerule to set
+     * @param {Gamerule[V]} value The value to set the gamerule too
+     */
+    setGamerule<V extends keyof Gamerule>(gamerule: V, value: Gamerule[V]): void;
     /**
      * Get all players, with custom query options
      * @param {EntityQueryOptions} options The query options

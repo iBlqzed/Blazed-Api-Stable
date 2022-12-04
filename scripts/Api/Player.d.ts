@@ -134,6 +134,11 @@ export declare class Player {
      */
     setScore(objective: string, score: number): void;
     /**
+     * Set the player's gamemode
+     * @param {Gamemode} gamemode The gamemode to set as the player's
+     */
+    setGamemode(gamemode: Gamemode): void;
+    /**
      * Teleport to a certain location
      * @param {Vec3} location The location to teleport to
      */
