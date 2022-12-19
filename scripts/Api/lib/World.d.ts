@@ -63,9 +63,14 @@ declare class World {
      */
     setGamerule<V extends keyof Gamerule>(gamerule: V, value: Gamerule[V]): void;
     /**
+     * Get all players
+     * @returns {Player[]} All players
+     */
+    getAllPlayers(): Player[];
+    /**
      * Get all players, with custom query options
      * @param {EntityQueryOptions} options The query options
-     * @returns {Player[]} All players that match the query options
+     * @returns {Promise<Player[]} All players that match the query options
      */
     getPlayers(options?: EntityQueryOptions): Promise<Player[]>;
     /**
@@ -78,7 +83,7 @@ declare class World {
      * Broadcast a message in chat
      * @param {string | number | symbol} message Message to broadcast
      */
-    broadcast(message: string | number | symbol): void;
+    say(message: string | number | symbol): void;
 }
 export declare const world: World;
 export {};

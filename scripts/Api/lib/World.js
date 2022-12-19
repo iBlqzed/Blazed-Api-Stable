@@ -82,9 +82,16 @@ class World {
         v.runCommandAsync(`gamerule ${gamerule} ${value}`);
     }
     /**
+     * Get all players
+     * @returns {Player[]} All players
+     */
+    getAllPlayers() {
+        return Iworld.getAllPlayers().map(plr => new Player(plr));
+    }
+    /**
      * Get all players, with custom query options
      * @param {EntityQueryOptions} options The query options
-     * @returns {Player[]} All players that match the query options
+     * @returns {Promise<Player[]} All players that match the query options
      */
     async getPlayers(options) {
         if (!options)
@@ -126,7 +133,7 @@ class World {
      * Broadcast a message in chat
      * @param {string | number | symbol} message Message to broadcast
      */
-    broadcast(message) {
+    say(message) {
         v.runCommandAsync(`tellraw @a { "rawtext": [{ "text": "${message.toString()}" }] } `);
     }
 }

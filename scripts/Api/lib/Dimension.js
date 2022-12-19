@@ -16,7 +16,7 @@ export class Dimension {
      * @returns {Promise<boolean>} Whether or not there was an error
      */
     runCommandAsync(command) {
-        return new Promise(e => this.dimension.runCommandAsync(command).then(() => e(true)).catch(() => e(false)));
+        return this.dimension.runCommandAsync(command).then(() => true, () => false);
     }
     /**
      * Spawn a particle at a certain location in this dimension

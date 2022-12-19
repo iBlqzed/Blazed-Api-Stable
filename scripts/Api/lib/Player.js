@@ -13,7 +13,7 @@ export class Player {
      * @param {boolean} showParticles Whether or not to show particles
      */
     addEffect(effect, duration, amplifier, showParticles) {
-        this.player.runCommandAsync(`effect @s ${effect} ${duration} ${amplifier ?? ""} ${showParticles ? !showParticles : ""}`);
+        this.player.runCommandAsync(`effect @s ${effect.getName()} ${duration} ${amplifier ?? ""} ${amplifier ? !showParticles : ""}`);
     }
     /**
      * Add a score to an objective
@@ -66,6 +66,7 @@ export class Player {
      * @returns {Dimension} The entity's dimension
      */
     getDimension() {
+        throw new Error("Can't get dimension at this moment");
         //@ts-ignore
         return new Dimension(this.player.dimension.id);
     }
@@ -86,8 +87,7 @@ export class Player {
      * @returns {"minecraft:player"} The entity's id
      */
     getId() {
-        //@ts-ignore
-        return this.player.typeId;
+        return "minecraft:player";
     }
     /**
      * Get the IPlayer
@@ -151,7 +151,7 @@ export class Player {
      * Message the player something
      * @param {string | number | symbol} message Message to send to the player
      */
-    message(message) {
+    tell(message) {
         this.player.runCommandAsync(`tellraw @s {"rawtext":[{"text":"${message.toString()}"}]}`);
     }
     /**

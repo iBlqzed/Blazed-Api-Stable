@@ -1,6 +1,6 @@
 import { Player as IPlayer } from "@minecraft/server";
 import { Dimension } from "./Dimension";
-import { Effects, Gamemode, SoundOptions, Vec3 } from "./Types";
+import { EffectType, Gamemode, SoundOptions, Vec3 } from "./Types";
 export declare class Player {
     protected player: IPlayer;
     constructor(player: IPlayer);
@@ -11,7 +11,7 @@ export declare class Player {
      * @param {number} amplifier The strength of the effect
      * @param {boolean} showParticles Whether or not to show particles
      */
-    addEffect(effect: Effects, duration: number, amplifier?: number, showParticles?: boolean): void;
+    addEffect(effect: EffectType, duration: number, amplifier?: number, showParticles?: boolean): void;
     /**
      * Add a score to an objective
      * @param {string} objective Objective to add the score to
@@ -98,7 +98,7 @@ export declare class Player {
      * Message the player something
      * @param {string | number | symbol} message Message to send to the player
      */
-    message(message: string | number | symbol): void;
+    tell(message: string | number | symbol): void;
     /**
      * Plays a sound that only this particular player can hear
      * @param {string} soundId The id of the sound to player

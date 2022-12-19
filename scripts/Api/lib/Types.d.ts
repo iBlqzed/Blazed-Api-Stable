@@ -6,6 +6,45 @@ export declare enum Gamemode {
     spectator = 3,
     default = 5
 }
+export declare const MinecraftEffectTypes: {
+    readonly absorption: EffectType;
+    readonly badOmen: EffectType;
+    readonly blindness: EffectType;
+    readonly conduitPower: EffectType;
+    readonly darkness: EffectType;
+    readonly fatalPoison: EffectType;
+    readonly fireResistance: EffectType;
+    readonly haste: EffectType;
+    readonly healthBoost: EffectType;
+    readonly hunger: EffectType;
+    readonly instantDamage: EffectType;
+    readonly instantHealth: EffectType;
+    readonly invisibility: EffectType;
+    readonly jumpBoost: EffectType;
+    readonly levitation: EffectType;
+    readonly miningFatigue: EffectType;
+    readonly nausea: EffectType;
+    readonly nightVision: EffectType;
+    readonly poison: EffectType;
+    readonly regeneration: EffectType;
+    readonly resistance: EffectType;
+    readonly saturation: EffectType;
+    readonly slowFalling: EffectType;
+    readonly slowness: EffectType;
+    readonly speed: EffectType;
+    readonly strength: EffectType;
+    readonly villageHero: EffectType;
+    readonly waterBreathing: EffectType;
+    readonly weakness: EffectType;
+    readonly wither: EffectType;
+};
+export declare type EffectType = {
+    /**
+     * Get the name of the effect type
+     * @returns {string} The name of the effect type
+     */
+    getName(): string;
+};
 export declare type Vec3 = {
     /**
      * The x position
@@ -80,7 +119,6 @@ export declare type EntityQueryOptions = {
      */
     excludeTags?: string[];
 };
-export declare type Effects = "absorption" | "bad_omen" | "blindness" | "conduit_power" | "darkness" | "fatal_poison" | "fire_resistance" | "haste" | "health_boost" | "hunger" | "instant_damage" | "instant_health" | "invisibility" | "jump_boost" | "levitation" | "mining_fatigue" | "nausea" | "night_vision" | "poison" | "regeneration" | "resistance" | "saturation" | "slow_falling" | "slowness" | "speed" | "strength" | "village_hero" | "water_breathing" | "weakness" | "wither";
 export declare type Dimensions = "overworld" | "nether" | "the end";
 export declare type Time = "sunrise" | "day" | "noon" | "sunset" | "night" | "midnight" | number;
 export declare type DisplaySlot = "belowname" | "list" | "sidebar";

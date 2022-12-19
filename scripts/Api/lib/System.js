@@ -1,7 +1,7 @@
 import { system as Isystem } from "@minecraft/server";
-const runCallbacks = [];
+const tickCallbacks = [];
 const tick = () => {
-    runCallbacks.forEach((e) => e());
+    tickCallbacks.forEach((e) => e());
     Isystem.run(tick);
 };
 Isystem.run(tick);
@@ -22,12 +22,12 @@ class System {
         const tick = () => {
             if (currentTick++ >= tickDelay) {
                 //@ts-ignore
-                runCallbacks.splice(runCallbacks.findIndex(e => e["id"] === id), 1);
+                tickCallbacks.splice(tickCallbacks.findIndex(e => e["id"] === id), 1);
                 callback();
             }
         };
         tick["id"] = id;
-        runCallbacks.push(tick);
+        tickCallbacks.push(tick);
         return this.id++;
     }
     /**
@@ -46,7 +46,7 @@ class System {
             }
         };
         tick["id"] = this.id;
-        runCallbacks.push(tick);
+        tickCallbacks.push(tick);
         return this.id++;
     }
     /**
@@ -55,10 +55,10 @@ class System {
      */
     clearRun(id) {
         //@ts-ignore
-        const index = runCallbacks.findIndex(e => e["id"] === id);
+        const index = tickCallbacks.findIndex(e => e["id"] === id);
         if (index === -1)
             return;
-        runCallbacks.splice(index, 1);
+        tickCallbacks.splice(index, 1);
     }
     /**
      * Clear the run of a previously executed runSchedule call
@@ -66,10 +66,10 @@ class System {
      */
     clearRunSchedule(id) {
         //@ts-ignore
-        const index = runCallbacks.findIndex(e => e["id"] === id);
+        const index = tickCallbacks.findIndex(e => e["id"] === id);
         if (index === -1)
             return;
-        runCallbacks.splice(index, 1);
+        tickCallbacks.splice(index, 1);
     }
 }
 export const system = new System();
