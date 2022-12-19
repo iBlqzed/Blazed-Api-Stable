@@ -59,28 +59,6 @@ export declare type Vec3 = {
      */
     z: number;
 };
-export type IBlockLocation = {
-    /**
-     * The x position
-     */
-    x: number;
-    /**
-     * The y position
-     */
-    y: number;
-    /**
-     * The z position
-     */
-    z: number;
-    /**
-     * Returns a BlockLocation for a block above this BlockLocation (that is, y + 1).
-     */
-    above(): BlockLocation
-    /**
-     * Compares this BlockLocation and another BlockLocation to one another.
-     */
-    equals(BlockLocation: BlockLocation): boolean
-}
 export declare type EntityQueryScoreOptions = {
     /**
      * If set to true, entities and players within this score range
