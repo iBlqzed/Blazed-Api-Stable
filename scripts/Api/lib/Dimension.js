@@ -1,4 +1,5 @@
 import { world } from "@minecraft/server";
+import { Block } from "./Block";
 export class Dimension {
     constructor(id) {
         this.dimension = world.getDimension(id);
@@ -25,5 +26,10 @@ export class Dimension {
      */
     spawnParticle(particleId, location) {
         this.dimension.runCommandAsync(`particle ${particleId} ${location ? `${location.x} ${location.y} ${location.z}` : "~~~"}`);
+    }
+
+    getBlock(location) {
+        location.dimension = this.dimension.id
+        return new Block(location)
     }
 }

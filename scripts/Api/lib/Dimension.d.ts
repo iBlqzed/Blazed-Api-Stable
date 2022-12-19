@@ -1,3 +1,4 @@
+import { Block, BlockLocation } from "./Block";
 import { Dimensions, Vec3 } from "./Types";
 export declare class Dimension {
     private dimension;
@@ -19,4 +20,6 @@ export declare class Dimension {
      * @param location The location at which to spawn the particle
      */
     spawnParticle(particleId: string, location: Vec3): void;
+
+    getBlock(location: BlockLocation): Block
 }
