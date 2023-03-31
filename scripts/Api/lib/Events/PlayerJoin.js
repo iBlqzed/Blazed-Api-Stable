@@ -1,5 +1,5 @@
 import { world } from "@minecraft/server";
-import { Player } from "../Player";
+import { Player } from "../Entity";
 import { EventCreator } from "./EventCreator";
 import { TickEventSignal } from "./Tick";
 export class PlayerJoinEventSignal extends EventCreator {

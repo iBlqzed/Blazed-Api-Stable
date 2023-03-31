@@ -8,3 +8,4 @@ export declare class Events {
     readonly playerDeath: PlayerDeathEventSignal;
     readonly playerLeave: PlayerLeaveEventSignal;
 }
+export { PlayerDeathEventSignal, PlayerJoinEventSignal, PlayerLeaveEventSignal, TickEventSignal };

@@ -1,4 +1,4 @@
-import type { Player } from "./Player";
+import type { Player } from "./Entity";
 export declare enum Gamemode {
     survival = 0,
     creative = 1,
@@ -94,6 +94,10 @@ export declare type EntityQueryOptions = {
      */
     tags?: string[];
     /**
+     * Includes entities that match the specified family.
+     */
+    family?: string;
+    /**
      * Include entities at the location
      * Used in conjunction with closest, farthest, limit, and distance properties (Requires atleast one of the following).
      */
@@ -118,6 +122,10 @@ export declare type EntityQueryOptions = {
      * Excludes entities with a tag that matches one of the specified values.
      */
     excludeTags?: string[];
+    /**
+     * Excludes entities with a family that matches one of the specified values.
+     */
+    excludeFamilies?: string[];
 };
 export declare type Dimensions = "overworld" | "nether" | "the end";
 export declare type Time = "sunrise" | "day" | "noon" | "sunset" | "night" | "midnight" | number;

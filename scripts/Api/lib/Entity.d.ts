@@ -1,9 +1,10 @@
 import { Player as IPlayer } from "@minecraft/server";
 import { Dimension } from "./Dimension";
+import { EntityInventory } from "./Inventory";
 import { EffectType, Gamemode, SoundOptions, Vec3 } from "./Types";
-export declare class Player {
-    protected player: IPlayer;
-    constructor(player: IPlayer);
+export declare class Entity {
+    protected entity: IPlayer;
+    constructor(entity: IPlayer);
     /**
      * Add an effect to the entity
      * @param {Effects} effect Effect to add to the entity
@@ -24,54 +25,20 @@ export declare class Player {
      */
     addTag(tag: string): void;
     /**
-     * Add xp points to the player
-     * @param {number} amount Amount of xp points to add to the player
-     */
-    addXpPoints(amount: number): void;
-    /**
-     * Add xp levels to the player
-     * @param {number} amount Amount of xp levels to add to the player
-     */
-    addXpLevels(amount: number): void;
-    /**
-     * Clear the player's spawn point
-     */
-    clearRespawnPoint(): void;
-    /**
-     * Clear the player's title
-     * @remarks Only clears title and subtitle, not actionbar
-     */
-    clearTitle(): void;
-    /**
      * Get the dimension of the entity
      * @returns {Dimension} The entity's dimension
      */
     getDimension(): Dimension;
     /**
-     * Get the player's gamemode
-     * @returns {Promise<Gamemode>} The player's gamemode
-     */
-    getGamemode(): Promise<Gamemode>;
-    /**
      * Get the entity's id
-     * @returns {"minecraft:player"} The entity's id
+     * @returns {string} The entity's id
      */
-    getId(): "minecraft:player";
+    getId(): string;
     /**
-     * Get the IPlayer
-     * @returns {IPlayer} The IPlayer
+     * Get the IEntity
+     * @returns {IPlayer} The IEntity
      */
-    getIPlayer(): IPlayer;
-    /**
-     * Get the player's location
-     * @returns {Promise<Vec3>} The player's location
-     */
-    getLocation(): Promise<Vec3>;
-    /**
-     * Get the player's name
-     * @returns {string} The player's name
-     */
-    getName(): string;
+    getIEntity(): IPlayer;
     /**
      * Get a score on an objective
      * @param {string} objective Objective to get the score of
@@ -95,17 +62,6 @@ export declare class Player {
      */
     kill(): void;
     /**
-     * Message the player something
-     * @param {string | number | symbol} message Message to send to the player
-     */
-    tell(message: string | number | symbol): void;
-    /**
-     * Plays a sound that only this particular player can hear
-     * @param {string} soundId The id of the sound to player
-     * @param {SoundOptions} soundOptions Aditional sound options
-     */
-    playSound(soundId: string, soundOptions?: SoundOptions): void;
-    /**
      * Remove a score from an objective
      * @param {string} objective Objective to remove the score from
      * @param {number} score Amount to remove from the objective
@@ -123,21 +79,11 @@ export declare class Player {
      */
     runCommandAsync(command: string): Promise<boolean>;
     /**
-     * Run a custom command
-     * @param {string} command Command to run
-     */
-    runCustomCommand(command: string): void;
-    /**
      * Set a score for an objective
      * @param {string} objective Objective to set the score to
      * @param {number} score Amount to set for the objective
      */
     setScore(objective: string, score: number): void;
-    /**
-     * Set the player's gamemode
-     * @param {Gamemode} gamemode The gamemode to set as the player's
-     */
-    setGamemode(gamemode: Gamemode): void;
     /**
      * Teleport to a certain location
      * @param {Vec3} location The location to teleport to
@@ -148,4 +94,73 @@ export declare class Player {
      * @param {string} event Event to trigger
      */
     triggerEvent(event: string): void;
+}
+export declare class Player extends Entity {
+    protected entity: IPlayer;
+    constructor(player: IPlayer);
+    /**
+     * Add xp points to the player
+     * @param {number} amount Amount of xp points to add to the player
+     */
+    addXpPoints(amount: number): void;
+    /**
+     * Add xp levels to the player
+     * @param {number} amount Amount of xp levels to add to the player
+     */
+    addXpLevels(amount: number): void;
+    /**
+     * Clear the player's spawn point
+     */
+    clearRespawnPoint(): void;
+    /**
+     * Clear the player's title
+     * @remarks Clears title and subtitle, not actionbar
+     */
+    clearTitle(): void;
+    /**
+     * Get the player's gamemode
+     * @returns {Promise<Gamemode>} The player's gamemode
+     */
+    getGamemode(): Promise<Gamemode>;
+    /**
+     * Get the entity's id
+     * @returns {"minecraft:player"} The entity's id
+     */
+    getId(): "minecraft:player";
+    /**
+     * Get the IPlayer
+     * @returns {IPlayer} The IPlayer
+     */
+    getIEntity(): IPlayer;
+    /**
+     * Get the entity's inventory
+     * @returns {EntityInventory} The entity's inventory
+     */
+    getInventory(): EntityInventory;
+    /**
+     * Get the player's location
+     * @returns {Promise<Vec3>} The player's location
+     */
+    getLocation(): Promise<Vec3>;
+    /**
+     * Get the player's name
+     * @returns {string} The player's name
+     */
+    getName(): string;
+    /**
+     * Message the player something
+     * @param {string | number | symbol} message Message to send to the player
+     */
+    sendMessage(message: string | number | symbol): void;
+    /**
+     * Plays a sound that only this particular player can hear
+     * @param {string} soundId The id of the sound to player
+     * @param {SoundOptions} soundOptions Aditional sound options
+     */
+    playSound(soundId: string, soundOptions?: SoundOptions): void;
+    /**
+     * Set the player's gamemode
+     * @param {Gamemode} gamemode The gamemode to set as the player's
+     */
+    setGamemode(gamemode: Gamemode): void;
 }

@@ -1,14 +1,9 @@
-import { CommandManager } from "./CommandHandler";
 import { Dimension } from "./Dimension";
 import { Events } from "./Events/Events";
-import { Player } from "./Player";
+import { Player } from "./Entity";
 import { ScoreboardManager } from "./ScoreboardManager";
 import { Difficulty, Dimensions, EntityQueryOptions, Gamerule, MusicOptions, SoundOptions, Time } from "./Types";
 declare class World {
-    /**
-     * A custom commmand handler
-     */
-    readonly commands: CommandManager;
     /**
      * A set of events to run code
      */
@@ -70,7 +65,7 @@ declare class World {
     /**
      * Get all players, with custom query options
      * @param {EntityQueryOptions} options The query options
-     * @returns {Promise<Player[]} All players that match the query options
+     * @returns {Promise<Player[]>} All players that match the query options
      */
     getPlayers(options?: EntityQueryOptions): Promise<Player[]>;
     /**

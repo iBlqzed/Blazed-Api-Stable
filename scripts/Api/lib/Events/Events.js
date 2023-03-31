@@ -10,3 +10,4 @@ export class Events {
         this.playerLeave = new PlayerLeaveEventSignal();
     }
 }
+export { PlayerDeathEventSignal, PlayerJoinEventSignal, PlayerLeaveEventSignal, TickEventSignal };

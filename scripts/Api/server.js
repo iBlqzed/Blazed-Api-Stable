@@ -1,8 +1,5 @@
 import { system, world } from "@minecraft/server";
-export { world } from "./lib/World.js";
-export { system } from "./lib/System.js";
-export { Player } from "./lib/Player.js";
-export * from "./lib/Types.js";
+export * from "./lib/index.js";
 system.run(() => {
     const v = world.getDimension("overworld");
     v.runCommandAsync(`scoreboard objectives add API_X dummy`);

@@ -1,4 +1,4 @@
-import { Player } from "../Player";
+import { Player } from "../Entity";
 import { EventCreator } from "./EventCreator";
 export declare class PlayerDeathEventSignal extends EventCreator<PlayerDeathEvent> {
     constructor();
