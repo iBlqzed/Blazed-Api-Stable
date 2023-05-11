@@ -1,7 +1,15 @@
-import { Dimensions, Vec3 } from "./Types";
+import { Dimension as IDimension } from "@minecraft/server";
+import { Dimensions, Vector3 } from "./Types";
+import { Block } from "./Block";
 export declare class Dimension {
-    private dimension;
-    constructor(id: Dimensions);
+    private readonly dimension;
+    constructor(dim: Dimensions | IDimension);
+    /**
+     * Gets a block at a certian location
+     * @param {Vector3} location Location to get the block
+     * @returns {Block} Location of the block to get
+     */
+    getBlock(location: Vector3): Block;
     /**
      * Get the dimension's id
      * @returns {string} The dimension's id
@@ -18,5 +26,5 @@ export declare class Dimension {
      * @param particleId The particle id
      * @param location The location at which to spawn the particle
      */
-    spawnParticle(particleId: string, location: Vec3): void;
+    spawnParticle(particleId: string, location: Vector3): void;
 }

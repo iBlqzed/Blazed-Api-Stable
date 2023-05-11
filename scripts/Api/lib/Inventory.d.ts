@@ -13,12 +13,7 @@ export declare class EntityInventory {
     /**
      * Clears all items from the inventory
      */
-    clearAll(): void;
-    /**
-     * Clear a certain slot in the inventory
-     * @param {number} slot The slot of the inventory to clear
-     */
-    clearItem(slot: number): void;
+    clear(): void;
     /**
      * Test for if a slot in the inventory is empty
      * @param {number} slot Slot to test

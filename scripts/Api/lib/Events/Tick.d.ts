@@ -4,5 +4,6 @@ export declare class TickEventSignal extends EventCreator<TickEvent> {
 }
 declare type TickEvent = {
     deltaTime: number;
+    currentTick: number;
 };
 export {};

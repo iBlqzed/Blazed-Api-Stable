@@ -1,75 +1,42 @@
 import { system as Isystem } from "@minecraft/server";
-const tickCallbacks = [];
-const tick = () => {
-    tickCallbacks.forEach((e) => e());
-    Isystem.run(tick);
-};
-Isystem.run(tick);
 class System {
     constructor() {
-        this.id = 0;
+        /**
+         * Amount of ticks that have passed since the world started
+         */
+        this.currentTick = Isystem.currentTick;
     }
     /**
      * Runs a specified function at a future time
      * @param callback Function callback to run when the tickDelay time criteria is met
-     * @param tickDelay Amount of ticks until callback is called
      * @returns {number} An id that can be used with the clearRun method
      */
-    run(callback, tickDelay = 0) {
-        let currentTick = 0;
-        --tickDelay;
-        const id = this.id;
-        const tick = () => {
-            if (currentTick++ >= tickDelay) {
-                //@ts-ignore
-                tickCallbacks.splice(tickCallbacks.findIndex(e => e["id"] === id), 1);
-                callback();
-            }
-        };
-        tick["id"] = id;
-        tickCallbacks.push(tick);
-        return this.id++;
+    run(callback) {
+        return Isystem.run(callback);
     }
     /**
      * Runs a specified function at a scheduled interval
-     * @param callback Function callback to run on the specified schedule
+     * @param callback Function callback to run on the specified interval
      * @param tickInterval Amount of ticks until callback is called
      * @returns {number} An id that can be used with the clearRun method
      */
-    runSchedule(callback, tickInterval = 0) {
-        let currentTick = 0;
-        --tickInterval;
-        const tick = () => {
-            if (currentTick++ >= tickInterval) {
-                currentTick = 0;
-                callback();
-            }
-        };
-        tick["id"] = this.id;
-        tickCallbacks.push(tick);
-        return this.id++;
+    runInterval(callback, tickInterval) {
+        return Isystem.runInterval(callback, tickInterval);
+    }
+    /**
+     * Runs a specified function at a future time
+     * @param callback Function callback to run when the tickDelay time criteria is met
+     * @returns {number} An id that can be used with the clearRun method
+     */
+    runTimeout(callback, tickDelay) {
+        return Isystem.runTimeout(callback, tickDelay);
     }
     /**
      * Clear the run of a previously executed run call
-     * @param id Id of the returned run
+     * @param id Id of the returned run call
      */
     clearRun(id) {
-        //@ts-ignore
-        const index = tickCallbacks.findIndex(e => e["id"] === id);
-        if (index === -1)
-            return;
-        tickCallbacks.splice(index, 1);
-    }
-    /**
-     * Clear the run of a previously executed runSchedule call
-     * @param id Id of the returned runSchedule
-     */
-    clearRunSchedule(id) {
-        //@ts-ignore
-        const index = tickCallbacks.findIndex(e => e["id"] === id);
-        if (index === -1)
-            return;
-        tickCallbacks.splice(index, 1);
+        Isystem.clearRun(id);
     }
 }
 export const system = new System();

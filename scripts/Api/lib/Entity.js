@@ -48,7 +48,7 @@ export class Entity {
     }
     /**
      * Get the IEntity
-     * @returns {IPlayer} The IEntity
+     * @returns {IEntity} The IEntity
      */
     getIEntity() {
         return this.entity;
@@ -107,7 +107,7 @@ export class Entity {
      * @returns {Promise<boolean>} Whether or not there was an error
      */
     async runCommandAsync(command) {
-        return this.entity.runCommandAsync(command).then(() => true).catch(() => false);
+        return this.entity.runCommandAsync(command).then(() => false, () => true);
     }
     /**
      * Set a score for an objective
@@ -119,7 +119,7 @@ export class Entity {
     }
     /**
      * Teleport to a certain location
-     * @param {Vec3} location The location to teleport to
+     * @param {Vector3} location The location to teleport to
      */
     teleport(location) {
         this.entity.runCommandAsync(`tp @s ${location.x} ${location.y} ${location.z}`);
@@ -202,7 +202,7 @@ export class Player extends Entity {
     }
     /**
      * Get the player's location
-     * @returns {Promise<Vec3>} The player's location
+     * @returns {Promise<Vector3>} The player's location
      */
     async getLocation() {
         return {

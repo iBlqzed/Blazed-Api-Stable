@@ -17,14 +17,6 @@ class World {
         this.scoreboard = new ScoreboardManager();
     }
     /**
-     * Run a command async
-     * @param {string} command Command to run
-     * @returns {Promise<boolean>} Whether or not there was an error
-     */
-    async runCommandAsync(command) {
-        return v.runCommandAsync(command).then(() => true).catch(() => false);
-    }
-    /**
      * Set the world's time
      * @param {Time} timeOfDay The time
      */
@@ -116,8 +108,9 @@ class World {
                 if (options.closest)
                     cmd += `c=${options.closest},`;
             }
+            cmd = cmd.slice(0, -1) + "]";
             plrs.forEach(async (plr, i) => {
-                plr.runCommandAsync(cmd.slice(0, -1) + "]").then(() => plrArr.push(new Player(plr))).finally(() => (++i === len) && e(plrArr));
+                plr.runCommandAsync(cmd).then(() => plrArr.push(new Player(plr))).finally(() => (i + 1 === len) && e(plrArr));
             });
         });
     }
@@ -131,10 +124,10 @@ class World {
     }
     /**
      * Broadcast a message in chat
-     * @param {string | number | symbol} message Message to broadcast
+     * @param {string | RawMessage} message Message to broadcast
      */
-    say(message) {
-        v.runCommandAsync(`tellraw @a {"rawtext":[{"text":"${message.toString().replaceAll('"', '\\"')}"}]}`);
+    sendMessage(message) {
+        Iworld.sendMessage(message);
     }
 }
 export const world = new World();

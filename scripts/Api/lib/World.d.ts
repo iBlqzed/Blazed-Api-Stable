@@ -1,3 +1,4 @@
+import { RawMessage } from "@minecraft/server";
 import { Dimension } from "./Dimension";
 import { Events } from "./Events/Events";
 import { Player } from "./Entity";
@@ -12,12 +13,6 @@ declare class World {
      * The world scoreboard manager
      */
     readonly scoreboard: ScoreboardManager;
-    /**
-     * Run a command async
-     * @param {string} command Command to run
-     * @returns {Promise<boolean>} Whether or not there was an error
-     */
-    runCommandAsync(command: string): Promise<boolean>;
     /**
      * Set the world's time
      * @param {Time} timeOfDay The time
@@ -76,9 +71,9 @@ declare class World {
     getDimension(dimension: Dimensions): Dimension;
     /**
      * Broadcast a message in chat
-     * @param {string | number | symbol} message Message to broadcast
+     * @param {string | RawMessage} message Message to broadcast
      */
-    say(message: string | number | symbol): void;
+    sendMessage(message: string | RawMessage): void;
 }
 export declare const world: World;
 export {};

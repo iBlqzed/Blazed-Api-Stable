@@ -1,3 +1,5 @@
+export * from "./Block.js";
+export * from "./BlockPermutation.js";
 export * from "./Dimension.js";
 export * from "./Entity.js";
 export * from "./Events/Events.js";

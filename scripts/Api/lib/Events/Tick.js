@@ -4,12 +4,10 @@ export class TickEventSignal extends EventCreator {
     constructor() {
         super();
         let now = Date.now();
-        const tick = () => {
+        system.runInterval(() => {
             const v = Date.now();
-            this.emit({ deltaTime: (v - now) / 1000 });
+            this.emit({ deltaTime: (v - now) / 1000, currentTick: system.currentTick });
             now = v;
-            system.run(tick);
-        };
-        system.run(tick);
+        });
     }
 }

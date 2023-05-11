@@ -45,7 +45,7 @@ export declare type EffectType = {
      */
     getName(): string;
 };
-export declare type Vec3 = {
+export declare type Vector3 = {
     /**
      * The x position
      */
@@ -101,7 +101,7 @@ export declare type EntityQueryOptions = {
      * Include entities at the location
      * Used in conjunction with closest, farthest, limit, and distance properties (Requires atleast one of the following).
      */
-    location?: Vec3;
+    location?: Vector3;
     /**
      * Includes the closest entities to the location that was specified
      */
@@ -180,7 +180,7 @@ export declare type SoundOptions = {
     /**
      * Specifies a location of where to play a particular sound.
      */
-    location?: Vec3;
+    location?: Vector3;
     /**
      * Pitch adjustment level for the sound.
      */

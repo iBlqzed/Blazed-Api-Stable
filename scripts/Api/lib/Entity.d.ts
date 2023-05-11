@@ -1,10 +1,10 @@
-import { Player as IPlayer } from "@minecraft/server";
+import { Player as IPlayer, Entity as IEntity } from "@minecraft/server";
 import { Dimension } from "./Dimension";
 import { EntityInventory } from "./Inventory";
-import { EffectType, Gamemode, SoundOptions, Vec3 } from "./Types";
+import { EffectType, Gamemode, SoundOptions, Vector3 } from "./Types";
 export declare class Entity {
-    protected entity: IPlayer;
-    constructor(entity: IPlayer);
+    protected readonly entity: IEntity;
+    constructor(entity: IEntity);
     /**
      * Add an effect to the entity
      * @param {Effects} effect Effect to add to the entity
@@ -36,9 +36,9 @@ export declare class Entity {
     getId(): string;
     /**
      * Get the IEntity
-     * @returns {IPlayer} The IEntity
+     * @returns {IEntity} The IEntity
      */
-    getIEntity(): IPlayer;
+    getIEntity(): IEntity;
     /**
      * Get a score on an objective
      * @param {string} objective Objective to get the score of
@@ -86,9 +86,9 @@ export declare class Entity {
     setScore(objective: string, score: number): void;
     /**
      * Teleport to a certain location
-     * @param {Vec3} location The location to teleport to
+     * @param {Vector3} location The location to teleport to
      */
-    teleport(location: Vec3): void;
+    teleport(location: Vector3): void;
     /**
      * Trigger an entity event
      * @param {string} event Event to trigger
@@ -139,9 +139,9 @@ export declare class Player extends Entity {
     getInventory(): EntityInventory;
     /**
      * Get the player's location
-     * @returns {Promise<Vec3>} The player's location
+     * @returns {Promise<Vector3>} The player's location
      */
-    getLocation(): Promise<Vec3>;
+    getLocation(): Promise<Vector3>;
     /**
      * Get the player's name
      * @returns {string} The player's name
